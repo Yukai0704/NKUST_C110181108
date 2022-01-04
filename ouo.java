@@ -1,29 +1,26 @@
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+
+import java.io.IOException;
 
 public class ouo {
-    public static void main(String[] args) {
-        int[] num = {0,0,1,1,1,2,2,3,3,4};
-        List<Integer> numList = new ArrayList<Integer>();
-        Set<String> numSet = new HashSet<String>();
-        List<String> numList2 = new ArrayList<String>();
-        for (int i : num)
-        {
-            numList.add(i);
-            numSet.add(Integer.toString(i));
+    public static void main(String[] args) throws IOException {
+        try {
+            String URL_1 = "https://ck101.com";
+            Document index_1 = Jsoup.connect(URL_1).get();
+            System.out.println(index_1.title());
+
+            Element table = index_1.select("table").last();
+            Elements tbody = table.select("tbody");
+
+            for (Element OUO : tbody) {
+                System.out.println(OUO.text());
+                System.out.println();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-        for (String i : numSet)
-            numList2.add(i);
-
-        int m =numList.size()-numSet.size();
-
-        for (int x = 0 ; x<m;x++)
-            numList2.add("_");
-        System.out.println("input : "+numList);
-        System.out.println("=================================================");
-        System.out.println("輸出 = "+numSet.size() +"個");
-        System.out.println("刪除相同元素後: "+numList2);
     }
 }
