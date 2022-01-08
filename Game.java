@@ -32,8 +32,8 @@ public class Game {
     }
 
     public static void main(String[] args) {Game p1=new Game("弓箭手",15,30,10);
-        Game p2=new Game("狂戰士",20,15,5);
-        Game p3=new Game("魔法師",10,40,30);
+        Game p2=new Game("fighter狂戰士",20,15,5);
+        Game p3=new Game("wizzard魔法師",10,40,30);
         while(true)
        {
             p1.attack(p2);
